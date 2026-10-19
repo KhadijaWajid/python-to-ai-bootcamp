@@ -1,0 +1,33 @@
+import numpy as np
+import pandas as pd
+  
+#numpy
+arr = np.array([12, 24, 36, 48, 60])
+print("Array:", arr)
+print("Array Sum:", np.sum(arr))
+print("Array Mean:", np.mean(arr))
+print("Array Max:", np.max(arr))
+
+#PANDAS
+df = pd.read_csv("Titanic-Dataset.csv")
+print("First 5 rows:\n", df.head())
+print("\nDataset Shape (Rows, Columns):", df.shape)
+print("\nMissing values in each column:\n", df.isnull().sum())
+print("\nPassenger Count by Gender:\n", df["Sex"].value_counts())
+print("\nPassenger Count by Class:\n", df["Pclass"].value_counts())
+
+#QUERIES
+# "How many female passengers traveling in 3rd Class (Pclass == 3) survived?"
+all_female_pclass3 = df[(df["Sex"] == "female") & (df["Pclass"] == 3)]
+survivors = df[(df["Sex"] == "female") & (df["Pclass"] == 3) & (df["Survived"] == 1)]
+print("Total 3rd Class Female Passengers:", len(all_female_pclass3))
+print("Total 3rd Class Female Survivors: ", len(survivors))
+print(f"Survival Rate: {(len(survivors) / len(all_female_pclass3)) * 100:.2f}%")
+
+# "How many solo passengers (no siblings/spouses and no parents/children) survived,
+solo_passengers = df[(df["SibSp"] == 0) & (df["Parch"] == 0)]
+solo_survivors = df[(df["SibSp"] == 0) & (df["Parch"] == 0) & (df["Survived"] == 1)]
+
+print("Total Solo Passengers:          ", len(solo_passengers))
+print("Total Solo Passenger Survivors: ", len(solo_survivors))
+print(f"Solo Traveler Survival Rate:    {(len(solo_survivors) / len(solo_passengers)) * 100:.2f}%")
