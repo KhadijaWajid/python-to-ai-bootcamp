@@ -48,9 +48,46 @@
 
 # name = "akif"
 
-for number in range(1,8):
-    if number == 2:
-        continue
-    if number == 5:
-        break
-    print(number)
+# for number in range(1,8):
+#     if number == 2:
+#         continue
+#     if number == 5:
+#         break
+#     print(number)
+
+
+
+
+#Practice
+student_name = "Khadija"      
+student_id = 096                
+gpa = 3.5                        
+is_passed = True                   
+project_score = None               # NoneType
+
+# Type casting
+raw_score = "85"
+converted_score = int(raw_score)
+
+# Operators
+quotient = 17 // 3                
+remainder = 17 % 3                 
+power = 2 ** 4                    
+
+is_eligible = (converted_score >= 80) and (gpa > 3.0)
+has_letter = "P" in student_name
+
+print("Type conversion:", converted_score, type(converted_score))
+print("Floor div:", quotient, ", Mod:", remainder, ", Power:", power)
+print("Eligibility Check:", is_eligible)
+print("Membership test ('P' in name):", has_letter)
+
+
+
+
+
+
+
+
+
+
